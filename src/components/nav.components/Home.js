@@ -6,9 +6,7 @@ const Home = ({userData, postData, setPostData, commentData}) => {
     return ( 
     <>
 
-
-    <PostCard  userData={userData} postData={postData} setPostData={setPostData} commentData={commentData}/>
-   
+    <PostCard  userData={userData} postData={postData} setPostData={setPostData} commentData={commentData}/>   
     
     </> );
 }

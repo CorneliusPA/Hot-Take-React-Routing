@@ -19,7 +19,7 @@ const CreatePost = ({userData,commentData}) => {
             profile_id: profile_id,
            post_title: post_title,
           written_text: written_text,
-          media_location: media_location
+          media_location: media_location,
         }).then((response) => {
           setPostList([
             ...postList,
@@ -28,7 +28,7 @@ const CreatePost = ({userData,commentData}) => {
             profile_id: profile_id,
             post_title: post_title,
             written_text: written_text,
-            media_location: media_location
+            media_location: media_location,
             },
           ]);
         });
@@ -108,8 +108,7 @@ const CreatePost = ({userData,commentData}) => {
                     placeholder="Would you like to respond?..."
                     
                     onChange={(event) => {
-                    setWritten_text(event.target.value);
-                  }}
+                    setWritten_text(event.target.value);}}
           />
               
             <div>

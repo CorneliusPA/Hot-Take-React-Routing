@@ -116,6 +116,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
             <h2>{props.user_name}</h2>
             <p>{props.comment_text}</p>
+            <img src={props.media_location} alt="" />
             
             <textarea type="text"  className="textareaInput" placeholder='Edit Comment?'
             onChange = {(event) => {setUpdateComment(event.target.value);}}/>

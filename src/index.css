@@ -32,6 +32,11 @@ button {
   margin-left: 5px;
 }
 
+.commentMedia{
+  max-width: 150px;
+  max-height: 150px;
+}
+
 .commentInformation {
   display: flex;
   flex-direction: column;

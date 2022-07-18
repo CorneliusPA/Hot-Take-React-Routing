@@ -10,7 +10,7 @@ const CreateUser = ({userData,commentData}) => {
     const [userList, setUserList] = useState([]);
 
     const addUser = () => {
-        Axios.post(`http://localhost:3001/createUser`, {
+        Axios.post(`https://hot-take-react.herokuapp.com/createUser`, {
            
         full_name: full_name,
         user_name: user_name,   
@@ -64,7 +64,7 @@ const CreateUser = ({userData,commentData}) => {
                       />
            </div>
 
-               <button onClick={addUser}><a href="http://localhost:3000/">Create User</a></button>
+               <button onClick={addUser}>Create User</button>
           </div>     
      </div>
 </div>       

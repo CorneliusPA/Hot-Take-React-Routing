@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
-import Post from '../css.modules/post.module.css'
+import Tooltip from "./Tooltip";
+
 
 const CreatePost = ({userData,commentData}) => {
 
@@ -13,7 +14,7 @@ const CreatePost = ({userData,commentData}) => {
     const [postList, setPostList] = useState([])
 
     const addPost = () => {
-        Axios.post(`http://localhost:3001/createPost`, {
+        Axios.post(`https://hot-take-react.herokuapp.com/createPost`, {
             user_name: user_name,
             profile_id: profile_id,
            post_title: post_title,
@@ -39,7 +40,7 @@ const CreatePost = ({userData,commentData}) => {
         <div className="userPostSelectContainer"> 
             <div className="userPostSelect">
                 <div>
-                    <label className={Post.test}>Username:</label>
+                    <label>Username:</label>
                     <select id="id" name="username" onChange={(event) => {setUser_name(event.target.value);}}  >
                           <option >Select a Username</option>
 
@@ -52,7 +53,15 @@ const CreatePost = ({userData,commentData}) => {
                 </div>
 
 <div>
-    <label>User ID:</label>
+
+     <div className="example-wrapper">
+        <Tooltip content="Username (ID:X)<=" direction="top">
+          <span className="example-emoji" role="img" aria-label="User ID">
+            <label>User ID:</label>
+          </span>
+        </Tooltip>
+      </div>
+
     <select id="id" name="profile_id" onChange={(event) => {setProfile_id(event.target.value);}}>
           <option >Select the ID</option>
 
@@ -113,7 +122,7 @@ const CreatePost = ({userData,commentData}) => {
                 />
            </div>
 
-                <button onClick={addPost}> <a href="http://localhost:3000/">Submit Post</a> </button>
+                <button onClick={addPost}> Submit Post </button>
                 
                 </div>               
           </div>

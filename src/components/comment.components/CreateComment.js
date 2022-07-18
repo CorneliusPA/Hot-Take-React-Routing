@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import Tooltip from "../post.components/Tooltip";
 
 const CreateComment = ({userData, postData, commentData}, id) => {
 
@@ -12,7 +13,7 @@ const CreateComment = ({userData, postData, commentData}, id) => {
   const [commentList, setCommentList] = useState([])
 
   const addComment = () => {
-    Axios.post(`http://localhost:3001/createComment`, {
+    Axios.post(`https://hot-take-react.herokuapp.com/createComment`, {
 
           user_name: user_name,
           profile_id: profile_id,
@@ -55,7 +56,15 @@ return (
            </div>
            
            <div>
-               <label >User ID:</label>
+
+           <div className="example-wrapper">
+               <Tooltip content="Username (ID:X)<=" direction="top">
+                       <span className="example-emoji" role="img" aria-label="User ID">
+                             <label>User ID:</label>
+                       </span>
+               </Tooltip>
+          </div>
+
                <select id="id" name="profile_id" onChange={(event) => {setProfile_id(event.target.value);}}>
                <option >Select the User ID</option>
 
@@ -68,8 +77,16 @@ return (
           </div>
 
           <div>
-              <label>Post ID:</label>
-              <select id="id" name="profile_id" onChange={(event) => {setPost_id(event.target.value);}}>
+
+              <div className="example-wrapper">
+                  <Tooltip content="http://localhost:3000/posts/0/(X) <=" direction="top">
+                      <span className="example-emoji" role="img" aria-label="User ID">
+                           <label>Post ID:</label>
+                      </span>
+                  </Tooltip>
+              </div>
+
+              <select id="id" name="post_id" onChange={(event) => {setPost_id(event.target.value);}}>
               <option >Select the Post ID</option>
 
 {postData.map((props, key) => (
@@ -127,7 +144,7 @@ return (
 
                </div>
           </div>
-     <button  onClick={addComment}> <a href="http://localhost:3000/">Submit Comment</a> </button>      
+     <button  onClick={addComment}> Submit Comment </button>      
 </div>
         
        

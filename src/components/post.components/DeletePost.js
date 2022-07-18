@@ -6,7 +6,7 @@ const DeletePost = ({postData, setPostData}) => {
 let id;
 
     const deletePost = ({postData}) => {
-        Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/delete/${id}`).then((response) => {
           setPostData(
             postData.filter(({props}) => {
               return props.id != props.id;
@@ -17,7 +17,7 @@ let id;
 
     return ( <>
     
-    <button onClick={({props}) => {deletePost(props.id);}}> <a href="http://localhost:3000/">Delete Post</a> </button>
+    <button onClick={({props}) => {deletePost(props.id);}}> Delete Post</button>
 
     </> );
 }

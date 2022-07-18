@@ -4,7 +4,7 @@ import Axios from "axios";
 const DeleteComment = ({commentData, setCommentData}) => {
 
     const deleteComment = (id) => {
-        Axios.delete(`http://localhost:3001/deletePost/${id}`).then((response) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
           setCommentData(
             commentData.filter((props) => {
               return props.id != id;
@@ -16,7 +16,7 @@ const DeleteComment = ({commentData, setCommentData}) => {
 return ( 
 <>
 
-    <button onClick={(props) => {deleteComment(props.id)}}> <a href="http://localhost:3000/">Delete Comment</a> </button>
+    <button onClick={(props) => {deleteComment(props.id)}}> Delete Comment </button>
 
 </> 
 )}

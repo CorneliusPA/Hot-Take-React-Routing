@@ -12,7 +12,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
   const [ updateComment, setUpdateComment] = useState("");
   
   const editPost = (id) => {
-    Axios.put("http://localhost:3001/updatePost", { written_text: updatePost, id: id }).then(
+    Axios.put("https://hot-take-react.herokuapp.com/updatePost", { written_text: updatePost, id: id }).then(
       (response) => {
         setPostData(
           postData.map((props) => {
@@ -33,7 +33,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
   };
 
   const deletePost = (id) => {
-    Axios.delete(`http://localhost:3001/deletePost/${id}`).then((response) => {
+    Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
       setPostData(
         postData.filter(({props}) => {
           return props.id != id;
@@ -43,7 +43,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
   };
 
   const editComment = (id) => {
-    Axios.put("http://localhost:3001/updateComment", { comment_text: updateComment, id: id }).then(
+    Axios.put("https://hot-take-react.herokuapp.com/updateComment", { comment_text: updateComment, id: id }).then(
       (response) => {
         setCommentData(commentData.map((props) => {
             return props.id == id ? {
@@ -62,7 +62,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
   };
 
   const deleteComment = (id) => {
-    Axios.delete(`http://localhost:3001/deleteComment/${id}`).then((response) => {
+    Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`).then((response) => {
       setCommentData(
         commentData.filter((props) => {
           return props.id != id;
@@ -105,7 +105,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           onChange = {(event) => {setUpdatePost(event.target.value);}}
           />
           
-          <a href="http://localhost:3000/"><button onClick={() => editPost(props.id)}>Edit</button></a>
+          <button onClick={() => editPost(props.id)}>Edit Post</button>
 </div>       
     ))}
 
@@ -120,8 +120,8 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
             <textarea type="text"  className="textareaInput" placeholder='Edit Comment?'
             onChange = {(event) => {setUpdateComment(event.target.value);}}/>
 
-           <a href="http://localhost:3000/"> <button onClick={() => {editComment(props.id)}}> Edit </button></a>
-           <a href="http://localhost:3000/"> <button onClick={() => {deleteComment(props.id)}}> Delete</button></a>
+            <button onClick={() => {editComment(props.id)}}> Edit </button>
+            <button onClick={() => {deleteComment(props.id)}}> Delete</button>
            
 </div>
 ))}

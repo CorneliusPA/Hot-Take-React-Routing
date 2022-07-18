@@ -5,7 +5,7 @@ import Axios from 'axios';
 const PostCard = ({userData, postData}, setPostData) => {
     
     const deletePost = (id) => {
-        Axios.delete(`http://localhost:3001/deletePost/${id}`).then((response) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
           setPostData(
             postData.filter((props) => {
               return props.id != id;
@@ -25,9 +25,9 @@ const PostCard = ({userData, postData}, setPostData) => {
                        <h3 className='absolute viewButton'> View More</h3>
                   </Link>
 
-                  <a href="http://localhost:3000/"> 
+                  
                        <button className='absolute deleteButton'  onClick={() => { deletePost(props.id);}}> Delete Post</button>
-                  </a>  
+                    
         </div>
     ))}
     

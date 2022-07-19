@@ -28,9 +28,13 @@ const CreateUser = ({userData,commentData}) => {
         user_name: user_name,    
         user_icon: user_icon
           
-      },
+      }
           ]);
-        });
+        }).then((response) => {
+
+          navigate('/');
+        }
+          )
       };
 
     const navigateHandler = () => {

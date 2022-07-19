@@ -16,6 +16,10 @@ const DeleteComment = ({commentData, setCommentData}) => {
         }).then((response) => {
 
           navigateDelComment('/');
+        }).then(() => {
+
+          window.location.reload(false);
+
         })};
 
 return ( 

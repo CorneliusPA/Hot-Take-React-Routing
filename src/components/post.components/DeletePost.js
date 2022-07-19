@@ -19,6 +19,10 @@ let navigateDelPost = useNavigate();
 
           navigateDelPost('/');
 
+        }).then(() => {
+
+          window.location.reload(false);
+
         })};
 
     return ( <>

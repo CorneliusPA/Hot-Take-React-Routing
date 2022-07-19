@@ -17,6 +17,10 @@ const PostCard = ({userData, postData}, setPostData) => {
         }).then((response) => {
 
           navigateUserCard('/');
+        }).then(() => {
+
+          window.location.reload(false);
+
         })};
 
     return ( 

@@ -40,6 +40,10 @@ const CreateComment = ({userData, postData, commentData}, id) => {
     }).then((response) => {
 
       navigateComment('/');
+    }).then(() => {
+
+      window.location.reload(false);
+
     })};
 
 return ( 

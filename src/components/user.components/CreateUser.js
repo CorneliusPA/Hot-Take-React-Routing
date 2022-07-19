@@ -33,6 +33,10 @@ const CreateUser = ({userData,commentData}) => {
         }).then((response) => {
 
           navigateNewUser('/');
+        }).then(() => {
+
+          window.location.reload(false);
+
         })};
 
     return ( 

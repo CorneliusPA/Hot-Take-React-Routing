@@ -41,9 +41,7 @@ const CreatePost = ({userData,commentData}) => {
 
           window.location.reload(false);
 
-        })
-      
-      };
+        })};
 
     return ( 
 <div>

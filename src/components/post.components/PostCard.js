@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
 const PostCard = ({userData, postData}, setPostData) => {
-    
+
+  let navigateUserCard = useNavigate();
+
     const deletePost = (id) => {
         Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
           setPostData(
@@ -11,8 +14,10 @@ const PostCard = ({userData, postData}, setPostData) => {
               return props.id != id;
             })
           );
-        });
-      };
+        }).then((response) => {
+
+          navigateUserCard('/');
+        })};
 
     return ( 
     <> 

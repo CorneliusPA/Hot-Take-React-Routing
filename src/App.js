@@ -2,6 +2,7 @@
 import './index.css';
 import { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Home from './components/nav.components/Home';
 import Post from './components/post.components/Post';
 import CreatePost from './components/post.components/CreatePost';
@@ -16,6 +17,7 @@ const [userData , setUserData] = useState([]);
 const [postData , setPostData] = useState([]);
 const [commentData , setCommentData] = useState([]);
 
+const navigate = useNavigate();
 
 useEffect(() => {
   Axios.get(`https://hot-take-react.herokuapp.com/user_profile`).then((response) => {

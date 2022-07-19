@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import Tooltip from "./Tooltip";
-
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = ({userData,commentData}) => {
 
@@ -10,6 +10,8 @@ const CreatePost = ({userData,commentData}) => {
     const [post_title, setPost_title] = useState("")
     const [written_text, setWritten_text] = useState("")
     const [media_location, setMedia_location] = useState("")
+
+    let navigate = useNavigate();
 
     const [postList, setPostList] = useState([])
 
@@ -31,7 +33,16 @@ const CreatePost = ({userData,commentData}) => {
             media_location: media_location,
             },
           ]);
-        });
+        }).then((response) => {
+
+          navigate('/');
+
+        }).then(() => {
+
+          window.location.reload(false);
+
+        })
+      
       };
 
     return ( 

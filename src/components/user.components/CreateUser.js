@@ -10,7 +10,7 @@ const CreateUser = ({userData,commentData}) => {
     const [user_icon, setUser_icon] = useState("");
     const [userList, setUserList] = useState([]);
     
-    const navigate = useNavigate();
+    let navigateNewUser = useNavigate();
     
     const addUser = () => {
         Axios.post(`https://hot-take-react.herokuapp.com/createUser`, {
@@ -28,20 +28,12 @@ const CreateUser = ({userData,commentData}) => {
         user_name: user_name,    
         user_icon: user_icon
           
-      }
+      },
           ]);
         }).then((response) => {
 
-          navigate('/');
-        }
-          )
-      };
-
-    const navigateHandler = () => {
-      
-      navigate('/')
-    
-    }
+          navigateNewUser('/');
+        })};
 
     return ( 
 <div>
@@ -78,7 +70,6 @@ const CreateUser = ({userData,commentData}) => {
            </div>
 
                <button onClick={addUser}>Create User</button>
-               <button onClick={navigateHandler}>Return</button>
           </div>     
      </div>
 </div>       

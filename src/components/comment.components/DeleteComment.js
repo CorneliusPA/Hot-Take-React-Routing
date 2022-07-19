@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const DeleteComment = ({commentData, setCommentData}) => {
+
+  let navigateDelComment = useNavigate();
 
     const deleteComment = (id) => {
         Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
@@ -10,8 +13,10 @@ const DeleteComment = ({commentData, setCommentData}) => {
               return props.id != id;
             })
           );
-        });
-      };
+        }).then((response) => {
+
+          navigateDelComment('/');
+        })};
 
 return ( 
 <>

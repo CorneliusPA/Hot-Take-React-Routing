@@ -10,9 +10,12 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
   const [ updatePost, setUpdatePost] = useState("")
   const [ updateComment, setUpdateComment] = useState("");
+
+  let navigateUser = useNavigate();
   
   const editPost = (id) => {
-    Axios.put("https://hot-take-react.herokuapp.com/updatePost", { written_text: updatePost, id: id }).then(
+    Axios.put("https://hot-take-react.herokuapp.com/updatePost", 
+    { written_text: updatePost, id: id }).then(
       (response) => {
         setPostData(
           postData.map((props) => {
@@ -29,8 +32,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           })
         );
       }
-    );
-  };
+    ).then((response) => {
+
+      navigateUser('/');
+    })};
 
   const deletePost = (id) => {
     Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
@@ -39,8 +44,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           return props.id != id;
         })
       );
-    });
-  };
+    }).then((response) => {
+
+      navigateUser('/');
+    })};
 
   const editComment = (id) => {
     Axios.put("https://hot-take-react.herokuapp.com/updateComment", { comment_text: updateComment, id: id }).then(
@@ -58,8 +65,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           })
         );
       }
-    );
-  };
+    ).then((response) => {
+
+      navigateUser('/');
+    })};
 
   const deleteComment = (id) => {
     Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`).then((response) => {
@@ -68,13 +77,15 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           return props.id != id;
         })
       );
-    });
-  };
+    }).then((response) => {
+
+      navigateUser('/');
+    })};
 
 
 
   const { profile_id, id, user_name} = useParams();
-  let navigate = useNavigate();
+
 
     return ( 
     <>
@@ -130,7 +141,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 <CreateComment userData={userData} postData={postData} commentData={commentData} id={id}/>
 
         </div>
-              <button onClick={() => { navigate("/"); }} >Return</button>
+              <button onClick={() => { navigateUser('/') }} >Return</button>
     </section>
     
     </> );

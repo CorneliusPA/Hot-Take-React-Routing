@@ -35,6 +35,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
     ).then((response) => {
 
       navigateUser('/');
+    }).then(() => {
+
+      window.location.reload(false);
+
     })};
 
   const deletePost = (id) => {

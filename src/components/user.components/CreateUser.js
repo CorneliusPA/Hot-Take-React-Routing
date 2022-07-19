@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from "axios";
 
 
@@ -9,7 +9,9 @@ const CreateUser = ({userData,commentData}) => {
     const [user_name, setUser_name] = useState("");
     const [user_icon, setUser_icon] = useState("");
     const [userList, setUserList] = useState([]);
-
+    
+    const navigate = useNavigate();
+    
     const addUser = () => {
         Axios.post(`https://hot-take-react.herokuapp.com/createUser`, {
            
@@ -31,10 +33,9 @@ const CreateUser = ({userData,commentData}) => {
         });
       };
 
-    const historyHandler = () => {
-
-      const history = useHistory;
-      history.go(0)
+    const navigateHandler = () => {
+      
+      navigate('/')
     
     }
 
@@ -73,7 +74,7 @@ const CreateUser = ({userData,commentData}) => {
            </div>
 
                <button onClick={addUser}>Create User</button>
-               <button onClick={historyHandler}>Return</button>
+               <button onClick={navigateHandler}>Return</button>
           </div>     
      </div>
 </div>       

@@ -10,7 +10,9 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
   const [ updatePost, setUpdatePost] = useState("")
   const [ updateComment, setUpdateComment] = useState("");
-
+  
+  const { profile_id, id, user_name} = useParams();
+  
   let navigateUser = useNavigate();
   
   const editPost = (id) => {
@@ -101,7 +103,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
 
 
-  const { profile_id, id, user_name} = useParams();
+  
 
 
     return ( 
@@ -159,7 +161,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 <CreateComment userData={userData} postData={postData} commentData={commentData} id={id}/>
 
         </div>
-
+<button onClick={() => { navigateUser('/'); }}>Return</button>
     </section>
     
     </> );

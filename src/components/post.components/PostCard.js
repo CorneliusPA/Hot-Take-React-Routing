@@ -1,24 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import DeletePost from './DeletePost';
 
-const PostCard = ({userData, postData}, setPostData) => {
-
-  let navigateUserCard = useNavigate();
-
-    const deletePost = (id) => {
-        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
-          setPostData(
-            postData.filter((props) => {
-              return props.id != id;
-            })
-          );
-        }).then(() => {
+const PostCard = ({userData, postData, setPostData} ) => {
+    
+    
+  const deletePost = (id) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`)
+        .then(() => {
 
           window.location.reload(false);
-
+    
         })};
+      
+
 
     return ( 
     <> 
@@ -31,7 +27,7 @@ const PostCard = ({userData, postData}, setPostData) => {
                        <h3 className='absolute viewButton'> View More</h3>
                   </Link>
 
-                  
+                     
                        <button className='absolute deleteButton'  onClick={() => { deletePost(props.id);}}> Delete Post</button>
                     
         </div>

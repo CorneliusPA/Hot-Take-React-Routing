@@ -83,7 +83,8 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
     })};
 
   const deleteComment = (id) => {
-    Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`).then((response) => {
+    Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`)
+    .then((response) => {
       setCommentData(
         commentData.filter((props) => {
           return props.id != id;
@@ -133,6 +134,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           />
           
           <button onClick={() => editPost(props.id)}>Edit Post</button>
+          <button onClick={() => deletePost(props.id)}>Delete</button>
 </div>       
     ))}
 
@@ -157,7 +159,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 <CreateComment userData={userData} postData={postData} commentData={commentData} id={id}/>
 
         </div>
-              <button onClick={() => { navigateUser('/'); }} >Return</button>
+
     </section>
     
     </> );

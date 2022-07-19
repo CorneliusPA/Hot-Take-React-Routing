@@ -7,7 +7,7 @@ const DeleteComment = ({commentData, setCommentData}) => {
   let navigateDelComment = useNavigate();
 
     const deleteComment = (id) => {
-        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`).then((response) => {
           setCommentData(
             commentData.filter((props) => {
               return props.id != id;

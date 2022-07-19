@@ -80,7 +80,7 @@ const Profile = ({userData, postData, setPostData, commentData}) => {
     ))}
 
         </div>
-        <button >Return</button>
+        <button onClick={() => { navigate("/"); }} >Return</button>
     </section>
 
 

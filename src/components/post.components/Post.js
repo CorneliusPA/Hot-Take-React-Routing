@@ -32,7 +32,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           })
         );
       }
-    )};
+    ).then((response) => {
+
+      navigateUser('/');
+    })};
 
   const deletePost = (id) => {
     Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
@@ -41,6 +44,9 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           return props.id != id;
         })
       );
+    }).then((response) => {
+
+      navigateUser('/');
     })};
 
   const editComment = (id) => {
@@ -59,7 +65,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           })
         );
       }
-    )};
+    ).then((response) => {
+
+      navigateUser('/');
+    })};
 
   const deleteComment = (id) => {
     Axios.delete(`https://hot-take-react.herokuapp.com/deleteComment/${id}`).then((response) => {
@@ -68,6 +77,9 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           return props.id != id;
         })
       );
+    }).then((response) => {
+
+      navigateUser('/');
     })};
 
 
@@ -129,7 +141,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 <CreateComment userData={userData} postData={postData} commentData={commentData} id={id}/>
 
         </div>
-              <button >Return</button>
+              <button onClick={() => { navigateUser('/'); }} >Return</button>
     </section>
     
     </> );

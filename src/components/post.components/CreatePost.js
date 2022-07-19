@@ -33,6 +33,14 @@ const CreatePost = ({userData,commentData}) => {
             media_location: media_location,
             },
           ]);
+        }).then((response) => {
+
+          navigate('/');
+
+        }).then(() => {
+
+          window.location.reload(false);
+
         })
       
       };

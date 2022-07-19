@@ -13,6 +13,9 @@ const DeleteComment = ({commentData, setCommentData}) => {
               return props.id != id;
             })
           );
+        }).then((response) => {
+
+          navigateDelComment('/');
         })};
 
 return ( 

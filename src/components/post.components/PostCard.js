@@ -14,9 +14,6 @@ const PostCard = ({userData, postData}, setPostData) => {
               return props.id != id;
             })
           );
-        }).then((response) => {
-
-          navigateUserCard('/');
         }).then(() => {
 
           window.location.reload(false);

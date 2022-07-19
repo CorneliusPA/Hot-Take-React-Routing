@@ -32,7 +32,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           })
         );
       }
-    ).then(() => {
+    ).then((response) => {
+
+      navigateUser('/');
+    }).then(() => {
 
       window.location.reload(false);
 

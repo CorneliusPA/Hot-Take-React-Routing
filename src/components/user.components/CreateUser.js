@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import Axios from "axios";
 
 
@@ -29,6 +30,13 @@ const CreateUser = ({userData,commentData}) => {
           ]);
         });
       };
+
+    const historyHandler = () => {
+
+      const history = useHistory;
+      history.go(0)
+    
+    }
 
     return ( 
 <div>
@@ -65,6 +73,7 @@ const CreateUser = ({userData,commentData}) => {
            </div>
 
                <button onClick={addUser}>Create User</button>
+               <button onClick={historyHandler}>Return</button>
           </div>     
      </div>
 </div>       

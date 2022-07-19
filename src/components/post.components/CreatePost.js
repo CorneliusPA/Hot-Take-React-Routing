@@ -37,10 +37,6 @@ const CreatePost = ({userData,commentData}) => {
 
           navigate('/');
 
-        }).then(() => {
-
-          window.location.reload(false);
-
         })
       
       };

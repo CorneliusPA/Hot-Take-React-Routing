@@ -37,9 +37,6 @@ const CreateComment = ({userData, postData, commentData}, id) => {
 
         },
       ])
-    }).then((response) => {
-
-      navigateComment('/');
     })};
 
 return ( 

@@ -15,10 +15,6 @@ let navigateDelPost = useNavigate();
               return props.id != props.id;
             })
           );
-        }).then((response) => {
-
-          navigateDelPost('/');
-
         })};
 
     return ( <>

@@ -17,23 +17,27 @@ const PostCard = ({userData, postData, setPostData} ) => {
 
 
     return ( 
-    <> 
+    < section> 
      {postData.map((props, key) => (
-        <div key={props.id} className="postFeed">
-            <h2>{props.user_name}</h2>
-               <h1 className='postTitle'>{props.post_title}</h1>
-                  
+      <div key={props.id} className='postFeedContainer'>
+        <div  className="postFeed">
+            <div className='postFeedUsername'>{props.user_name}</div>
+               <div className='postFeedTitle'>{props.post_title}</div>          
+  
+                 
+                 
                   <Link to = {`/posts/${props.profile_id}/${props.id}`}> 
-                       <h3 className='absolute viewButton'> View More</h3>
-                  </Link>
-
+                       <div className='A viewButton'> View More</div>
+                  </Link>      
                      
-                       <button className='absolute deleteButton'  onClick={() => { deletePost(props.id);}}> Delete Post</button>
-                    
-        </div>
+                  <button className='B deleteButton'  onClick={() => { deletePost(props.id);}}> Delete Post</button>
+       
+        
+        </div>  
+      </div>
     ))}
     
-    </> );
+    </section> );
 }
  
 export default PostCard;

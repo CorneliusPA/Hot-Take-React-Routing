@@ -50,21 +50,14 @@ return (
 <div className="information">
     <div className="userCommentSelectContainer"> 
         <div className="userCommentSelect">
-            <div>
+            
                 <label>Username:</label>
-                <select id="id" name="username" onChange={(event) => {setUser_name(event.target.value);}}  >
-               <option >Select a Username</option>
 
-{userData.map((props, key) => (
-  
-        <option key={props.id} value={props.user_name}>{props.user_name} (ID:{props.id})</option>
-    
-))}
 
-               </select>
-           </div>
+               
            
-           <div>
+           
+           
 
            <div className="example-wrapper">
                <Tooltip content="Username (ID:X)<=" direction="top">
@@ -74,19 +67,6 @@ return (
                </Tooltip>
           </div>
 
-               <select id="id" name="profile_id" onChange={(event) => {setProfile_id(event.target.value);}}>
-               <option >Select the User ID</option>
-
-{userData.map((props, key) => (
-
-        <option key={props.id} value={props.id}>{props.id}</option>
-
-))}
-              </select>
-          </div>
-
-          <div>
-
               <div className="example-wrapper">
                   <Tooltip content="http://localhost:3000/posts/0/(X) <=" direction="top">
                       <span className="example-emoji" role="img" aria-label="User ID">
@@ -94,9 +74,34 @@ return (
                       </span>
                   </Tooltip>
               </div>
+              
+ <select className="commentSelect" id="id" name="username" onChange={(event) => {setUser_name(event.target.value);}}  >
+               <option >Username</option>
 
-              <select id="id" name="post_id" onChange={(event) => {setPost_id(event.target.value);}}>
-              <option >Select the Post ID</option>
+{userData.map((props, key) => (
+  
+        <option key={props.id} value={props.user_name}>{props.user_name} (ID:{props.id})</option>
+    
+))}
+               </select>
+
+               <select className="commentSelect" id="id" name="profile_id" onChange={(event) => {setProfile_id(event.target.value);}}>
+               <option >User ID</option>
+
+{userData.map((props, key) => (
+
+        <option key={props.id} value={props.id}>{props.id}</option>
+
+))}
+              </select>
+          
+
+         
+
+             
+
+              <select className="commentSelect" id="id" name="post_id" onChange={(event) => {setPost_id(event.target.value);}}>
+              <option >ID</option>
 
 {postData.map((props, key) => (
 
@@ -105,7 +110,7 @@ return (
 ))}
 
              </select>
-          </div>
+          
      </div>
 </div>
           <div>
@@ -131,7 +136,7 @@ return (
                 <div>
                 <label>Comment Text:</label>
 
-                <textarea className="textareaInput"
+                <textarea className="textareaInput textareaSize"
                   type="text"
                   rows="4" cols="53" 
                   placeholder="Would you like to respond?..."

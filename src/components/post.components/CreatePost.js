@@ -48,7 +48,7 @@ const CreatePost = ({userData,commentData}) => {
     <div className="information">
         <div className="userPostSelectContainer"> 
             <div className="userPostSelect">
-                <div>
+                
                     <label>Username:</label>
                     <select id="id" name="username" onChange={(event) => {setUser_name(event.target.value);}}  >
                           <option >Select a Username</option>
@@ -59,9 +59,9 @@ const CreatePost = ({userData,commentData}) => {
 
 ))}
                     </select>
-                </div>
+                
 
-<div>
+
 
      <div className="example-wrapper">
         <Tooltip content="Username (ID:X)<=" direction="top">
@@ -80,7 +80,7 @@ const CreatePost = ({userData,commentData}) => {
     
 ))}
   </select>
-</div>
+
             </div>
       </div>
 

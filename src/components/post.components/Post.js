@@ -107,8 +107,6 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
 
     return ( 
-    <>
-    
     <section className='full'>
             <div className="container">
          
@@ -127,11 +125,13 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
           <h1>{props.post_title}</h1>  
           
-          <img className='imgCenter' src={props.media_location} alt="" />
-          
+          <div className='imgCenter'>
+          <img className='postImage' src={props.media_location} alt="" />
+          </div>
+
           <p><strong>{props.user_name}:</strong>{props.written_text}</p>
           
-          <textarea  type="text" rows="4" cols="5" className="textareaSize" placeholder='Edit Post?...'
+          <textarea  type="text" rows="4" cols="4" className="textareaSize" placeholder='Edit Post?...'
           onChange = {(event) => {setUpdatePost(event.target.value);}}
           />
           
@@ -160,11 +160,10 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
 <CreateComment userData={userData} postData={postData} commentData={commentData} id={id}/>
 
-        </div>
+        
 <button onClick={() => { navigateUser('/'); }}>Return</button>
-    </section>
-    
-    </> );
+    </div>
+    </section> );
 }
  
 export default Post;

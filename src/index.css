@@ -157,7 +157,7 @@ img[src=""] {
 .information {
   display: flex;
   flex-direction: column;
-  width: 98%;
+  width: 99%;
   justify-content: center;
   align-items: center;
   background-color: rgb(67, 67, 67, .4);
@@ -411,7 +411,7 @@ strong{
   border: 2px solid rgba(192, 192, 192,.5);
   border-radius: 5px;
   background-color: rgba(0, 0, 0, .8);
-  width: 90%;
+  width: 320px;
   height: 50px;
    margin-top: 0px;
    color: white;

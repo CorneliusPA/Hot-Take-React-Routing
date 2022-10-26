@@ -7,7 +7,7 @@ const PostCard = ({userData, postData, setPostData} ) => {
     
     
   const deletePost = (id) => {
-        Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`)
+        Axios.delete(`http://localhost:3001/deletePost/${id}`)
         .then(() => {
 
           window.location.reload(false);

@@ -13,7 +13,7 @@ const CreateUser = ({userData,commentData}) => {
     let navigateNewUser = useNavigate();
     
     const addUser = () => {
-        Axios.post(`https://hot-take-react.herokuapp.com/createUser`, {
+        Axios.post(`http://localhost:3001/createUser`, {
            
         full_name: full_name,
         user_name: user_name,   

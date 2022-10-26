@@ -16,7 +16,7 @@ const CreatePost = ({userData,commentData}) => {
     const [postList, setPostList] = useState([])
 
     const addPost = () => {
-        Axios.post(`https://hot-take-react.herokuapp.com/createPost`, {
+        Axios.post(`http://localhost:3001/createPost`, {
             user_name: user_name,
             profile_id: profile_id,
            post_title: post_title,

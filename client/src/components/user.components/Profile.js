@@ -12,7 +12,7 @@ const Profile = ({userData, postData, setPostData, commentData}) => {
     const [ updateComment, setUpdateComment] = useState("");
 
     const editPost = (id) => {
-      Axios.put("https://hot-take-react.herokuapp.com/updatePost", { written_text: updatePost, id: id }).then(
+      Axios.put("http://localhost:3001/updatePost", { written_text: updatePost, id: id }).then(
         (response) => {
           setPostData(
             postData.map((props) => {
@@ -33,7 +33,7 @@ const Profile = ({userData, postData, setPostData, commentData}) => {
     };
   
     const deletePost = (id) => {
-      Axios.delete(`https://hot-take-react.herokuapp.com/deletePost/${id}`).then((response) => {
+      Axios.delete(`http://localhost:3001/deletePost/${id}`).then((response) => {
         setPostData(
           postData.filter(({props}) => {
             return props.id != id;

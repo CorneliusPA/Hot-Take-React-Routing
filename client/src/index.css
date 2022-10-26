@@ -85,7 +85,7 @@ code {
   height: 240px;
   display: grid;
   grid-template-columns: 120px;
-  grid-template-rows: 70px 70px 55px 45px;
+  grid-template-rows: 70px 70px;
    margin-top: 0px;
 }
 
@@ -135,6 +135,11 @@ html {
 
 .hidden{
   display: none;
+}
+
+.inputImage{
+  max-width: 50px;
+  max-height: 50px;
 }
 
 img{
@@ -326,7 +331,7 @@ strong{
 
 .commentSelect{
   width: 24vw;
-  max-width: 100px;
+  max-width: 120px;
   height: 20px;
   font-size: 1rem;
 }
@@ -399,7 +404,7 @@ strong{
 .userPostSelect{
  
   width: 80%;
-  height: 50px;
+  height: 20px;
   display: grid;
   grid-template-columns: 130px 160px;
   grid-template-rows: auto;
@@ -422,7 +427,7 @@ strong{
  
   height: 50px;
   display: grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: 100px 100px;
   grid-template-rows: auto;
  
  

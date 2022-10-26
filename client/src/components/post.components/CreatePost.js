@@ -1,27 +1,83 @@
-import { useState } from "react";
+import { useState, useRef} from "react";
 import Axios from "axios";
 import Tooltip from "./Tooltip";
 import { useNavigate } from 'react-router-dom';
 
+
 const CreatePost = ({userData,commentData}) => {
 
+  const profileIDHandler = (event) => {
+
+    
+    {userData.filter((props) => props.user_name === user_name).map((props) => (
+    
+      setProfile_id(props.id)
+          
+      ))}
+
+  }
+
+  
+ 
+
     const [user_name, setUser_name] = useState("")
-    const [profile_id, setProfile_id] = useState("")
+    const [profile_id, setProfile_id] = useState(0)
     const [post_title, setPost_title] = useState("")
     const [written_text, setWritten_text] = useState("")
-    const [media_location, setMedia_location] = useState("")
+    const [media_location, setMedia_location] = useState('')
+    const [media_locationName, setMedia_locationName] = useState('')
+    const [uploaded_image, setUploaded_image] = useState(null)
+
+    const [fileName, setFileName] = useState('');
+    const [base64, setBase64] = useState(null);
+   
+    const [message, setMessage] = useState('');
+    const inputRef = useRef(null);
+    const formRef = useRef(null);
 
     let navigate = useNavigate();
 
     const [postList, setPostList] = useState([])
 
+
+    
+
+  
+
+  const handleClick = () => inputRef && inputRef.current && inputRef.current.click();
+
+  const createBase64Image = (file) => {
+    const reader = new FileReader();
+    return new Promise(function (resolve, reject) {
+      reader.onload = function (event) {
+        resolve(event.target.result)
+      }
+      reader.readAsDataURL(file);
+    })
+  }
+
+  const handleFiles = async (e) => {
+    if (e.target.files[0]) {
+      const base64 = await createBase64Image(e.target.files[0]);
+      
+      setBase64(base64);
+      setFileName(e.target.files[0].name);
+    }
+  }
+
+
+
     const addPost = () => {
-        Axios.post(`http://localhost:3001/createPost`, {
+        Axios.post(`https://hot-take-react.herokuapp.com/createPost`, {
             user_name: user_name,
             profile_id: profile_id,
            post_title: post_title,
           written_text: written_text,
           media_location: media_location,
+          fileName: fileName,
+          base64: base64,
+         
+
         }).then((response) => {
           setPostList([
             ...postList,
@@ -31,6 +87,9 @@ const CreatePost = ({userData,commentData}) => {
             post_title: post_title,
             written_text: written_text,
             media_location: media_location,
+            fileName: fileName,
+            base64: base64,
+
             },
           ]);
         }).then((response) => {
@@ -47,59 +106,45 @@ const CreatePost = ({userData,commentData}) => {
 <div>
     <div className="information">
         <div className="userPostSelectContainer"> 
+
             <div className="userPostSelect">
                 
                     <label>Username:</label>
-                    <select id="id" name="username" onChange={(event) => {setUser_name(event.target.value);}}  >
+                    <select id="id" name="username" 
+                    onChange={(event) => {setUser_name(event.target.value);}}  
+                    onClick={profileIDHandler}
+                    >
                           <option >Select a Username</option>
 
 {userData.map((props) => (
         
-<option key={props.id} value={props.user_name}>{props.user_name} (ID:{props.id})</option>
+<option key={props.id} value={props.user_name} id={props.id}>{props.user_name}</option>
 
 ))}
                     </select>
-                
 
 
-
-     <div className="example-wrapper">
-        <Tooltip content="Username (ID:X)<=" direction="top">
-          <span className="example-emoji" role="img" aria-label="User ID">
-            <label>User ID:</label>
-          </span>
-        </Tooltip>
+     <div className="hidden example-wrapper">
+    
+            <label >User ID:</label>
+         
+        
       </div>
-
-    <select id="id" name="profile_id" onChange={(event) => {setProfile_id(event.target.value);}}>
-          <option >Select the ID</option>
-
-{userData.map((props) => (
-    
-<option key={props.id} value={props.id}>{props.id}</option>
-    
-))}
-  </select>
+ 
+  <input className="hidden postTitleInput"
+                 type="text"
+                 placeholder="Title..."
+                 value={JSON.stringify(profile_id)}
+                 onChange={(event) => {
+                 setProfile_id(event.target.value);}}
+          />
+  
 
             </div>
       </div>
 
       <div className="informationBox" >
-          <label className="hidden">user_name</label>
-          
-          <input  className="textForm hidden"
-                  type="text"
-                  placeholder="User Name..."
-                  onChange={() => user_name}
-          />
-
-          <label className="hidden">profile_id</label>
-          
-          <input className="textForm hidden"
-                 type="number"
-                 placeholder="User ID..."
-                 onChange={() => profile_id}
-          />
+   
 
                 <div>
           <label>Post Title:</label>
@@ -121,17 +166,43 @@ const CreatePost = ({userData,commentData}) => {
           />
               
             <div>
-                <label>Media Location:</label>
-                <input className="textareaInput postMediaInput"
-                       type="text"
-                       placeholder="Media URL..."
-                       onChange={(event) => {
-                       setMedia_location(event.target.value);}}
-                />
+                <label>Image:</label>
+
+      <div className="mui--text-dark-secondary mui--text-button">{message}</div>
+      <div className="upload-box" onClick={handleClick}>
+      <hr /> Select File <hr />
+
+        {fileName}
+      
+        <img className="inputImage" src={base64} alt=""/>
+      
+      </div>
+      <input type="file" ref={inputRef} onChange={handleFiles} style={{ display: 'none' }} accept="image/*" />
+     
+      <input className="hidden postTitleInput"
+                 type="text"
+                 placeholder="Title..."
+                 value={JSON.stringify(fileName)}
+                 onChange={(event) => {
+                 setFileName(event.target.value);}}
+          />
+
+      <input className="hidden postTitleInput"
+                 type="text"
+                 placeholder="Title..."
+                 value={JSON.stringify(base64)}
+                 onChange={(event) => {
+                 setBase64(event.target.value);}}
+          />
+
            </div>
 
+
                 <button onClick={addPost}> Submit Post </button>
-                
+            
+
+
+
                 </div>               
           </div>
      </div>      

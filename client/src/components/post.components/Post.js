@@ -118,7 +118,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
     <div className='postDisplay'>   
 {userData.filter((props) => props.id == profile_id).map((props, key) => (
 
-    <img src={props.user_icon} className='iconSample' key={props.id} ></img>))}
+    <img src={props.profile_image} className='iconSample' key={props.id} ></img>))}
     <h2>{props.user_name}</h2>
            
     </div>
@@ -126,7 +126,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
           <h1>{props.post_title}</h1>  
           
           <div className='imgCenter'>
-          <img className='postImage' src={props.media_location} alt="" />
+          <img className='postImage' src={props.image} alt="" />
           </div>
 
           <p><strong>{props.user_name}:</strong>{props.written_text}</p>
@@ -147,7 +147,7 @@ const Post = ({userData, postData, setPostData, commentData, setCommentData}) =>
 
             <h2>{props.user_name}</h2>
             <p>{props.comment_text}</p>
-            <img className="commentMedia" src={props.media_location} alt="" />
+            <img className="commentMedia" src={props.image} alt="" />
             
             <textarea type="text"  className="textareaInput" placeholder='Edit Comment?'
             onChange = {(event) => {setUpdateComment(event.target.value);}}/>

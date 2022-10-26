@@ -17,21 +17,21 @@ const [postData , setPostData] = useState([]);
 const [commentData , setCommentData] = useState([]);
 
 useEffect(() => {
-  Axios.get(`http://localhost:3001/user_profile`).then((response) => {
+  Axios.get(`https://hot-take-react.herokuapp.com/user_profile`).then((response) => {
     setUserData(response.data);
     
   });
 }, []);
 
 useEffect(() => {
-  Axios.get(`http://localhost:3001/user_post`).then((response) => {
+  Axios.get(`https://hot-take-react.herokuapp.com/user_post`).then((response) => {
     setPostData(response.data);
     
   });
 }, []);
 
 useEffect(() => {
-  Axios.get(`http://localhost:3001/post_comment`).then((response) => {
+  Axios.get(`https://hot-take-react.herokuapp.com/post_comment`).then((response) => {
     setCommentData(response.data);
     
   });

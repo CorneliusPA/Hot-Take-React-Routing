@@ -9,12 +9,16 @@ let id;
 let navigateDelPost = useNavigate();
 
     const deletePost = ({postData}) => {
-        Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
+        Axios.delete(`https://hot-take-react.herokuapp.com/delete/${id}`).then((response) => {
           setPostData(
             postData.filter(({props}) => {
               return props.id != props.id;
             })
           );
+        }).then((response) => {
+
+          navigateDelPost('/');
+
         }).then(() => {
 
           window.location.reload(false);
